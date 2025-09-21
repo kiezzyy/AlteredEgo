@@ -15,7 +15,7 @@ Background Story: Five random people bought the same old game console in a store
 
 ## Usage: Clone this Repository
 ```
-
+https://github.com/dassel-avg-dev/AlteredEgo.git
 ```
   
 
