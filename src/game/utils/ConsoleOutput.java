@@ -12,9 +12,9 @@ public class ConsoleOutput {
         System.out.println("---------------Choose Your Character --------------");
         System.out.println("        [1] Cosmic Dassel");
         System.out.println("        [2] Khylle The Reaper");
-        System.out.println("        [3] ");
-        System.out.println("        [4]");
-        System.out.println("        [5]");
+        System.out.println("        [3] Earl");
+        System.out.println("        [4] The one John");
+        System.out.println("        [5] And Rew");
         System.out.println("        Enter choice (1, 2, 3, 4, 5): ");
     }
 }
