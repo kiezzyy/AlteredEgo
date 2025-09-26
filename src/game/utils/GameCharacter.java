@@ -1,15 +1,25 @@
 package game.utils;
 
 public abstract class GameCharacter {
-    String name;
-    int health;
-    int mana;
+    private String name;
+    private int hitpoints;
+    private int mana;
+    private int skillOneCooldown;
+    private int skillTwoCooldown;
+    private int skillThreeCooldown;
 
-    public GameCharacter(String name, int health, int mana) {
-        this.name = name;
-        this.health = health;
-        this.mana = mana;
+    // if no value passed int the constructor
+    public GameCharacter() {
+        this.name = "Unknown";
+        this.hitpoints = 500;
+        this.mana = 100;
     }
 
-    public abstract void displayStatus();
+    public GameCharacter(String name) {
+        this.name = name;
+        this.hitpoints = 500;
+        this.mana = 100;
+    }
+
+
 }
