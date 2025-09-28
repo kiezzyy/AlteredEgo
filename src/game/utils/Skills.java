@@ -1,7 +1,7 @@
 package game.utils;
 
 public interface Skills {
-    public int skillOne();
-    public int skillTwo();
-    public int skillThree();
+    public void skillOne();
+    public void skillTwo();
+    public void skillThree();
 }
