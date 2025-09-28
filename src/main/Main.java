@@ -10,13 +10,7 @@ public class Main {
         CO.gameTitle();
         CO.characterChoices();
 
-        int choice = scanner.nextInt();
-
-
-
-
-
-
+        int choice = scanner.nextInt()
         scanner.close();
     }
 

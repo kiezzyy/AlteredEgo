@@ -13,12 +13,18 @@ public abstract class GameCharacter {
         this.name = "Unknown";
         this.hitpoints = 500;
         this.mana = 100;
+        this.skillOneCooldown = 0;
+        this.skillTwoCooldown = 0;
+        this.skillThreeCooldown = 0;
     }
 
     public GameCharacter(String name) {
         this.name = name;
         this.hitpoints = 500;
         this.mana = 100;
+        this.skillOneCooldown = 0;
+        this.skillTwoCooldown = 0;
+        this.skillThreeCooldown = 0;
     }
 
 
