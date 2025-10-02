@@ -1,4 +1,4 @@
-package game.utils;
+package gameutils;
 
 public abstract class GameCharacter {
     private String name;
@@ -18,5 +18,18 @@ public abstract class GameCharacter {
         this.mana = 100;
     }
 
+    public String getName() { return name; }
+
+    public int getHitpoints() { return hitpoints; }
+
+    public int getMana() { return mana; }
+
+    public int setHitpoints(int newHitpoints) {
+        this.hitpoints = newHitpoints;
+    }
+
+    public int setMana(int newMana) {
+        this.mana = newMana;
+    }
 
 }
