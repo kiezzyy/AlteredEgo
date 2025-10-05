@@ -34,8 +34,6 @@ public class Main {
             }
         }
 
-        CO.characterChoices();
-
         int playerChoice = 0;
         while(true) {
             try {
@@ -54,7 +52,7 @@ public class Main {
             }
         }
 
-        switch(choice) {
+        switch(playerChoice) {
             case 1 -> player = new Player("Cosmic Dassel", "Provoked Punch", "Bug Overflow", "Overclock");
             case 2 -> player = new Player("Khylle The Reaper", "Karate Kick", "Flying Food", "Voice of Destruction");
             case 3 -> player = new Player("Earl", "Knee Strike", "Double Kick", "Dodge");
@@ -62,7 +60,19 @@ public class Main {
             case 5 -> player = new Player("And Rew", "Dragon Fist", "Dragon First Missiles", "Dragon's Verdict of Demise");
         }
 
-        int enemyChoice = random.nextInt(1, 6);
+        int enemyChoice = 0;
+        while(true) {
+            try {
+                CO.enemyCharacterChoices();
+                enemyChoice = scanner.nextInt();
+                break;
+            }
+            catch(InputMismatchException e) {
+                System.out.println("    Invalid Input, Trya Again!");
+                scanner.nextLine();
+            }
+        }
+
         switch(enemyChoice) {
             case 1 -> enemy = new Enemy("Kaniel Outis", "Image Burn", "Spirit Compression", "Sanity Drain");
             case 2 -> enemy = new Enemy("Van Berskville", "Stab", "Parry", "Fang Sword Style");
@@ -71,14 +81,15 @@ public class Main {
             case 5 -> enemy = new Enemy("Deidre", "Lightning Cult", "Thunder Cleave", "Final Turn");
         }
 
-        boolean isRunning = true;
         do {
             // loop until the user gets the input right
+            int playerSkillChoice = 0, enemySkillChoice = 0;
+            // Player user skill input
             while(true) {
                 try {
                     CO.playerSkillChoices(player);
-                    int skillChoice = scanner.nextInt();
-                    if(skillChoice < 0 || skillChoice > 3) {
+                    playerSkillChoice = scanner.nextInt();
+                    if(playerSkillChoice < 0 || playerSkillChoice > 3) {
                         throw new InputMismatchException();
                     }
                     else {
@@ -91,49 +102,46 @@ public class Main {
                 }
             }
 
-            switch(skillChoice) {
+            switch(playerSkillChoice) {
                 case 0 -> {
-                    enemy.setHitPoints(player.basicAttack());
+                    enemy.setHitpoints(player.basicAttack());
                 }
                 case 1 -> {
-                    enemy.setHitPoints(player.skillOne());
+                    enemy.setHitpoints(player.skillOne());
                 }
                 case 2 -> {
-                    enemy.setHitPoints(player.skillOne());
+                    enemy.setHitpoints(player.skillTwo());
                 }
                 case 3 -> {
-                    enemy.setHitPoints(player.skillOne());
+                    enemy.setHitpoints(player.skillThree());
                 }
             }
 
-            while(true) {
-                try {
-                    CO.enemySkillChoices(enemy);
-                    int enemySkillChoice = scanner.nextInt();
-                    if(enemySkillChoice < 0 || enemySkillChoice > 3) {
-                        throw new InputMismatchException();
-                    }
-                    else {
-                        break;
-                    }
+            enemySkillChoice = random.nextInt(0, 4);
+            CO.enemyRandomSkillChoice(enemy);
+
+            switch(enemySkillChoice) {
+                case 0 -> {
+                    player.setHitpoints(enemy.basicAttack());
                 }
-                catch (InputMismatchException e) {
-                    System.out.println("        Invalid Input, Try Again!");
-                    scanner.nextLine();
+                case 1 -> {
+                    player.setHitpoints(enemy.skillOne());
+                }
+                case 2 -> {
+                    player.setHitpoints(enemy.skillTwo());
+                }
+                case 3 -> {
+                    player.setHitpoints(enemy.skillThree());
                 }
             }
 
-            // logic sa enemy skill
+        } while(player.getHitpoints() <= 0 || enemy.getHitpoints() <= 0);
 
-
-
-            if(player.getHitpoints() <= 0 || enemy.getHitpoints() <= 0) {
-                isRunning = false;
-            }
-
-
-        } while(isRunning);
-
+        if(player.getHitPoints > 0) {
+            CO.printWithDelay(player.getName()+ " wins!");
+        } else {
+            CO.printWithDelay(enemy.getName()+ " wins!");
+        }
 
         scanner.close();
     }

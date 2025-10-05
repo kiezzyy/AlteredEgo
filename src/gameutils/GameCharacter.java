@@ -18,17 +18,23 @@ public abstract class GameCharacter {
         this.mana = 100;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public int getHitpoints() { return hitpoints; }
+    public int getHitpoints() {
+        return hitpoints;
+    }
 
-    public int getMana() { return mana; }
+    public int getMana() {
+        return mana;
+    }
 
     public void setHitpoints(int newHitpoints) {
         if(this.hitpoints - newHitpoints <= 0) {
             this.hitpoints = 0;
         } else {
-            this.h1itpoints -= newHitpoints;
+            this.hitpoints -= newHitpoints;
         }
     }
 

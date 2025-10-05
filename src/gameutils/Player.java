@@ -2,8 +2,8 @@ package gameutils;
 import java.util.*;
 
 public class Player extends GameCharacter implements Skills {
-    public static Random random = new Random();
-    public static ConsoleOutput CO = new ConsoleOutput();
+    public Random random = new Random();
+    public ConsoleOutput CO = new ConsoleOutput();
     private String skillOneName;
     private String skillTwoName;
     private String skillThreeName;
@@ -41,7 +41,9 @@ public class Player extends GameCharacter implements Skills {
         this.skillThreeCooldown = 0;
     }
 
-    public String getSkillOneName() { return skillOneName; }
+    public String getSkillOneName() {
+        return skillOneName;
+    }
 
     public void setSkillOneGame(String skillOneName) {
         this.skillOneName = skillOneName;
@@ -55,9 +57,13 @@ public class Player extends GameCharacter implements Skills {
         this.skillThreeName = skillThreeName;
     }
 
-    public String getSkillTwoName() { return skillTwoName; }
+    public String getSkillTwoName() {
+        return skillTwoName;
+    }
 
-    public String getSkillThreeName() { return skillThreeName; }
+    public String getSkillThreeName() {
+        return skillThreeName;
+    }
 
     public int getSkillOneCooldown() {
         return skillOneCooldown;
@@ -71,27 +77,39 @@ public class Player extends GameCharacter implements Skills {
         return skillThreeCooldown;
     }
 
+    public void setSkillOneCoolDown() {
+        this.skillOneCooldown++;
+    }
+
+    public void setSkillTwoCooldown() {
+        this.skillTwoCooldown++;
+    }
+
+    public void setSkillThreeCooldown() {
+        this.skillThreeCooldown++;
+    }
+
     public int basicAttack() {
-        int damage = random.nextInt(10, 20);
-        CO.printWithDelay(getName()+ "used Skill One: " +getSkillOneName()+ " worth " +damage+ " of damage!", 150);
+        int damage = random.nextInt(100, 201);
+        CO.printWithDelay("\n"+getName()+ " used Basic Attack: worth " +damage+ ", of damage!", 150);
         return damage;
     }
 
     public int skillOne() {
         int damage = random.nextInt(20, 50);
-        CO.printWithDelay(getName()+ "used Skill One: " +getSkillOneName()+ " worth " +damage+ " of damage!", 150);
+        CO.printWithDelay("\n"+getName()+ " used Skill One: " +getSkillOneName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
 
     public int skillTwo() {
         int damage = random.nextInt(20, 50);
-        CO.printWithDelay(getName()+ "used Skill One: " +getSkillOneName()+ " worth " +damage+ " of damage!", 150);
+        CO.printWithDelay("\n"+getName()+ " used Skill Two: " +getSkillTwoName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
 
     public int skillThree() {
         int damage = random.nextInt(20, 50);
-        CO.printWithDelay(getName()+ "used Skill One: " +getSkillOneName()+ " worth " +damage+ " of damage!", 150);
+        CO.printWithDelay("\n"+getName()+ " used Skill Three: " +getSkillThreeName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
 
