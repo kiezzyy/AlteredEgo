@@ -68,7 +68,7 @@ public class Main {
                 break;
             }
             catch(InputMismatchException e) {
-                System.out.println("    Invalid Input, Trya Again!");
+                System.out.println("    Invalid Input, Try Again!");
                 scanner.nextLine();
             }
         }
@@ -81,6 +81,7 @@ public class Main {
             case 5 -> enemy = new Enemy("Deidre", "Lightning Cult", "Thunder Cleave", "Final Turn");
         }
 
+        boolean isRunning = true;
         do {
             // loop until the user gets the input right
             int playerSkillChoice = 0, enemySkillChoice = 0;
@@ -135,7 +136,11 @@ public class Main {
                 }
             }
 
-        } while(player.getHitpoints() <= 0 || enemy.getHitpoints() <= 0);
+            if(player.getHitpoints() <= 0 || enemy.getHitpoints() <= 0) {
+                isRunning = false;
+            }
+
+        } while(isRunning);
 
         if(player.getHitpoints() > 0) {
             CO.printWithDelay("\n" +player.getName()+ " wins!",90);
