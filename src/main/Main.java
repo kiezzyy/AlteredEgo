@@ -137,10 +137,10 @@ public class Main {
 
         } while(player.getHitpoints() <= 0 || enemy.getHitpoints() <= 0);
 
-        if(player.getHitPoints > 0) {
-            CO.printWithDelay(player.getName()+ " wins!");
+        if(player.getHitpoints() > 0) {
+            CO.printWithDelay("\n" +player.getName()+ " wins!",90);
         } else {
-            CO.printWithDelay(enemy.getName()+ " wins!");
+            CO.printWithDelay("\n" +enemy.getName()+ " wins!",90);
         }
 
         scanner.close();

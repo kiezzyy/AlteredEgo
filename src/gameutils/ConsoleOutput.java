@@ -16,6 +16,28 @@ public class ConsoleOutput {
             System.out.println();
     }
 
+    public void printCenter() {
+        if(text == null) text = "";
+        if(width <= text.length()) {
+            System.out.println(text); return;
+        }
+        int padding = (width - text.length()) / 2;
+        System.out.println(" ".repeat(padding) + text);
+    }
+
+    public static void printCenteredWithDelay(String message, int width, int delay) {
+        if (message == null)
+            message = "";
+        if (width <= message.length()) {
+            printWithDelay(message, delay);
+            return;
+        }
+
+        int padding = (width - message.length()) / 2;
+        String paddedMessage = " ".repeat(padding) + message;
+        printWithDelay(paddedMessage, delay);
+    }
+
     public void gameTitle() {
         printWithDelay("------------- WELCOME TO ALTERED EGO --------------", 90);
         printWithDelay("----- Fight Your Other Side or Suffer Forever -----", 90);
