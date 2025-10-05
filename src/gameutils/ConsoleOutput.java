@@ -3,11 +3,11 @@ package gameutils;
 public class ConsoleOutput {
     public ConsoleOutput() { }
 
-    public void printWithDelay(String message, int delay) {
+    public static void printWithDelay(String message, int delay) {
         for(char ch : message.toCharArray()) {
             System.out.print(ch);
             try {
-                Thread.sleep(delayInSeconds);
+                Thread.sleep(delay);
             }
             catch(InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -37,11 +37,39 @@ public class ConsoleOutput {
 
     public void playerSkillChoices(Player player) {
         System.out.println("------ Choose Skill to use -----");
+        System.out.println("    [0] Basic Attack");
         System.out.println("    [1] Skill One: " + player.getSkillOneName());
         System.out.println("    [2] SKill Two: " + player.getSkillTwoName());
         System.out.println("    [3] Skill Three: " + player.getSkillThreeName());
-        System.out.print("  Enter choice (1, 2, or 3): ");
+        System.out.print("  Enter choice (0, 1, 2, or 3): ");
     }
+
+    public void enemyModeChoice() {
+        System.out.println("------ Select Enemy Mode ------");
+        System.out.println("    [0] Random");
+        System.out.println("    [1] User Selection");
+    }
+
+    public void enemyCharacterChoices() {
+        String enemies = """
+                    [1] Kaniel Outis
+                    [2] Van Berksville
+                    [3] Asta Clover
+                    [4] JF Void
+                    [5] Deidre
+                """;
+        System.out.println(enemies);
+    }
+
+    public void enemySkillChoices(Enemy enemy) {
+        System.out.println("-------- Choose Enemy Skill To Use ------");
+        System.out.println("    [0] Basic Attack");
+        System.out.println("    [1] Skill One: " + enemy.getSkillOneName());
+        System.out.println("    [2] Skill Two: " + enemy.getSkillTwoName());
+        System.out.println("    [3] Skill Three: " + enemy.getSkillThreeName());
+    }
+
+
 
 
 

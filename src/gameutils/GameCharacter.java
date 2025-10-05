@@ -24,12 +24,21 @@ public abstract class GameCharacter {
 
     public int getMana() { return mana; }
 
-    public int setHitpoints(int newHitpoints) {
-        this.hitpoints = newHitpoints;
+    public void setHitpoints(int newHitpoints) {
+        if(this.hitpoints - newHitpoints <= 0) {
+            this.hitpoints = 0;
+        } else {
+            this.h1itpoints -= newHitpoints;
+        }
     }
 
-    public int setMana(int newMana) {
-        this.mana = newMana;
+    public void setMana(int newMana) {
+        if(this.mana - newMana <= 0) {
+            this.mana = 0;
+        } else {
+            this.mana -= newMana;
+        }
+
     }
 
 }
