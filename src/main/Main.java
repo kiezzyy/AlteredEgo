@@ -265,7 +265,8 @@ public class Main {
 
         if(player.getHitpoints() > 0) {
             CO.printWithDelay("\n" +player.getName()+ " wins!",90);
-        } else {
+        }
+        else {
             CO.printWithDelay("\n" +enemy.getName()+ " wins!",90);
         }
 
