@@ -111,7 +111,7 @@ public class Player extends GameCharacter implements Skills {
 
     public int basicAttack() {
         int damage = random.nextInt(20, 31);
-        CO.printWithDelay("\n"+getName()+ " used Basic Attack: worth " +damage+ ", worth of damage!", 150);
+        CO.printWithDelay("\n"+getName()+ " used Basic Attack: worth " +damage+ ", of damage!", 150);
         return damage;
     }
 
@@ -133,15 +133,15 @@ public class Player extends GameCharacter implements Skills {
         return damage;
     }
 
-    public int getSKillOneManaUsage() {
+    public int getSkillOneManaUsage() {
         return skillOneManaUsage;
     }
 
-    public int getSKillTwoManaUsage() {
+    public int getSkillTwoManaUsage() {
         return skillTwoManaUsage;
     }
 
-    public int getSKillThreeManaUsage() {
+    public int getSkillThreeManaUsage() {
         return skillThreeManaUsage;
     }
 
