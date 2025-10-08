@@ -14,5 +14,4 @@ public class Enemy extends Player implements Skills {
         super(characterName, skillOneName, skillTwoName, skillThreeName);
     }
 
-
 }

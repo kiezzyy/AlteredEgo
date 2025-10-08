@@ -16,8 +16,8 @@ public class ConsoleOutput {
     }
 
     public void gameTitle() {
-        printWithDelay("---------------- WELCOME TO ALTERED EGO ----------------", 50);
-        printWithDelay("--------- Fight Your Other Side or Suffer Forever ------", 50);
+        printWithDelay("---------------- WELCOME TO ALTERED EGO ----------------", 30);
+        printWithDelay("--------- Fight Your Other Side or Suffer Forever ------", 30);
     }
 
     public void playOrExitMenu() {
@@ -64,8 +64,20 @@ public class ConsoleOutput {
         System.out.println("\t\t[2] Skill Two: " + enemy.getSkillTwoName());
         System.out.println("\t\t[3] Skill Three: " + enemy.getSkillThreeName());
         System.out.println();
-        printWithDelay(enemy.getName()+ " is preparing for a counter attack..........", 200);
+        printWithDelay(enemy.getName()+ " is preparing for a counter attack..........", 30);
     }
+
+//    public void printManaStatus(Enemy enemy, ArrayList<String> playerSkills) {
+//
+//    }
+//
+//    public void specialEncounterMonologue(Player player) {
+//        System.out.println();
+//    }
+//
+//    public void specialEncounterMonologue(Enemy enemy) {
+//        System.out.println();
+//    }
 
 
 }

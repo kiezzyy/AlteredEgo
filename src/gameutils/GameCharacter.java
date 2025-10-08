@@ -9,13 +9,13 @@ public abstract class GameCharacter {
     public GameCharacter() {
         this.name = "Unknown";
         this.hitpoints = 500;
-        this.mana = 100;
+        this.mana = 200;
     }
 
     public GameCharacter(String name) {
         this.name = name;
         this.hitpoints = 500;
-        this.mana = 100;
+        this.mana = 200;
     }
 
     public String getName() {
@@ -38,7 +38,7 @@ public abstract class GameCharacter {
         }
     }
 
-    public void setMana(int newMana) {
+    public void reduceMana(int newMana) {
         if(this.mana - newMana <= 0) {
             this.mana = 0;
         } else {
@@ -46,5 +46,14 @@ public abstract class GameCharacter {
         }
 
     }
+
+    public void increaseMana(int newMana) {
+        if(newMana + this.mana > 200) {
+            this.mana = 200;
+        } else {
+            this.mana += newMana;
+        }
+    }
+
 
 }

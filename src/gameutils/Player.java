@@ -10,6 +10,9 @@ public class Player extends GameCharacter implements Skills {
     private int skillOneCooldown;
     private int skillTwoCooldown;
     private int skillThreeCooldown;
+    private int skillOneManaUsage;
+    private int skillTwoManaUsage;
+    private int skillThreeManaUsage;
 
     public Player() {
         super("Unknown");
@@ -19,6 +22,9 @@ public class Player extends GameCharacter implements Skills {
         this.skillOneCooldown = 0;
         this.skillTwoCooldown = 0;
         this.skillThreeCooldown = 0;
+        this.skillOneManaUsage = 25;
+        this.skillTwoManaUsage = 50;
+        this.skillThreeManaUsage = 100;
     }
 
     public Player(String characterName) {
@@ -29,6 +35,9 @@ public class Player extends GameCharacter implements Skills {
         this.skillOneCooldown = 0;
         this.skillTwoCooldown = 0;
         this.skillThreeCooldown = 0;
+        this.skillOneManaUsage = 25;
+        this.skillTwoManaUsage = 50;
+        this.skillThreeManaUsage = 100;
     }
 
     public Player(String characterName, String skillOneName, String skillTwoName, String skillThreeName) {
@@ -39,15 +48,13 @@ public class Player extends GameCharacter implements Skills {
         this.skillOneCooldown = 0;
         this.skillTwoCooldown = 0;
         this.skillThreeCooldown = 0;
+        this.skillOneManaUsage = 25;
+        this.skillTwoManaUsage = 50;
+        this.skillThreeManaUsage = 100;
     }
 
-    public String getSkillOneName() {
-        return skillOneName;
-    }
-
-    public void setSkillOneGame(String skillOneName) {
-        this.skillOneName = skillOneName;
-    }
+    public void setSkillOneName(String skillOneName) {
+        this.skillOneName = skillOneName; }
 
     public void setSkillTwoName(String skillTwoName) {
         this.skillTwoName = skillTwoName;
@@ -55,6 +62,10 @@ public class Player extends GameCharacter implements Skills {
 
     public void setSkillThreeName(String skillThreeName) {
         this.skillThreeName = skillThreeName;
+    }
+
+    public String getSkillOneName() {
+        return skillOneName;
     }
 
     public String getSkillTwoName() {
@@ -77,40 +88,76 @@ public class Player extends GameCharacter implements Skills {
         return skillThreeCooldown;
     }
 
-    public void setSkillOneCoolDown() {
+    public void reduceSkillOneCooldown() {
         this.skillOneCooldown++;
+        if(this.skillOneCooldown >=2) {
+            this.skillOneCooldown = 0;
+        }
     }
 
-    public void setSkillTwoCooldown() {
+    public void reduceSkillTwoCooldown() {
         this.skillTwoCooldown++;
+        if(this.skillTwoCooldown >= 2) {
+            this.skillOneCooldown = 0;
+        }
     }
 
-    public void setSkillThreeCooldown() {
+    public void reduceSkillThreeCooldown() {
         this.skillThreeCooldown++;
+        if(this.skillThreeCooldown >= 5) {
+            this.skillThreeCooldown = 0;
+        }
     }
 
     public int basicAttack() {
-        int damage = random.nextInt(100, 201);
+        int damage = random.nextInt(20, 31);
         CO.printWithDelay("\n"+getName()+ " used Basic Attack: worth " +damage+ ", worth of damage!", 150);
         return damage;
     }
 
     public int skillOne() {
-        int damage = random.nextInt(20, 50);
+        int damage = random.nextInt(30, 41);
         CO.printWithDelay("\n"+getName()+ " used Skill One: " +getSkillOneName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
 
     public int skillTwo() {
-        int damage = random.nextInt(20, 50);
+        int damage = random.nextInt(40, 51);
         CO.printWithDelay("\n"+getName()+ " used Skill Two: " +getSkillTwoName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
 
     public int skillThree() {
-        int damage = random.nextInt(20, 50);
+        int damage = random.nextInt(100, 151);
         CO.printWithDelay("\n"+getName()+ " used Skill Three: " +getSkillThreeName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
+
+    public int getSKillOneManaUsage() {
+        return skillOneManaUsage;
+    }
+
+    public int getSKillTwoManaUsage() {
+        return skillTwoManaUsage;
+    }
+
+    public int getSKillThreeManaUsage() {
+        return skillThreeManaUsage;
+    }
+
+    public boolean isSkillOneUsable() {
+        return (getMana() >= this.skillOneManaUsage) ? true : false;
+    }
+
+    public boolean isSkillTwoUsable() {
+        return (getMana() >= this.skillTwoManaUsage) ? true : false;
+    }
+
+    public boolean isSkillThreeUsable() {
+        return (getMana() >= this.skillThreeManaUsage) ? true : false;
+    }
+
+
+
 
 }

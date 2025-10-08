@@ -29,7 +29,7 @@ public class Main {
                 }
             }
             catch(InputMismatchException error) {
-                System.out.println("      Invalid Input. Try again!");
+                System.out.println("\t\tInvalid Input. Try again!");
                 scanner.nextLine();
             }
         }
@@ -47,7 +47,7 @@ public class Main {
                 }
             }
             catch(InputMismatchException error) {
-                System.out.println("        Invalid Input. Try again!");
+                System.out.println("\t\tInvalid Input. Try again!");
                 scanner.nextLine();
             }
         }
@@ -68,7 +68,7 @@ public class Main {
                 break;
             }
             catch(InputMismatchException e) {
-                System.out.println("    Invalid Input, Try Again!");
+                System.out.println("\t\tInvalid Input, Try Again!");
                 scanner.nextLine();
             }
         }
@@ -78,13 +78,13 @@ public class Main {
             case 2 -> enemy = new Enemy("Van Berskville", "Stab", "Parry", "Fang Sword Style");
             case 3 -> enemy = new Enemy("Asta Clover", "Arcane Blast", "Whirlwind", "Block");
             case 4 -> enemy = new Enemy("JF Void", "Void Chop", "Void Deflect", "Void Stagger Palm");
-            case 5 -> enemy = new Enemy("Deidre", "Lightning Cult", "Thunder Cleave", "Final Turn");
+            case 5 -> enemy = new Enemy("Deidre", "Lightning Cut", "Thunder Cleave", "Final Turn");
         }
 
         boolean isRunning = true;
         do {
+            int playerSkillChoice = 0, enemySkillChoice = 0, newPlayerMana = 0, newEnemyMana = 0;
             // loop until the user gets the input right
-            int playerSkillChoice = 0, enemySkillChoice = 0;
             // Player user skill input
             while(true) {
                 try {
@@ -98,7 +98,7 @@ public class Main {
                     }
                 }
                 catch (InputMismatchException e) {
-                    System.out.println("        Invalid Input, Try Again!");
+                    System.out.println("\t\tInvalid Input, Try Again!");
                     scanner.nextLine();
                 }
             }
@@ -108,31 +108,55 @@ public class Main {
                     enemy.setHitpoints(player.basicAttack());
                 }
                 case 1 -> {
-                    enemy.setHitpoints(player.skillOne());
+                    if(player.getSkillOneCooldown() == 0 && player.isSkillOneUsable()) {
+                        enemy.setHitpoints(player.skillOne());
+                        player.reduceMana(player.getSKillOneManaUsage());
+                        player.reduceSkillOneCooldown();
+                    }
+//                    else {
+//
+//                    }
                 }
                 case 2 -> {
                     enemy.setHitpoints(player.skillTwo());
+                    player.reduceMana(player.getSKillTwoManaUsage());
+                    player.reduceSkillTwoCooldown();
                 }
                 case 3 -> {
                     enemy.setHitpoints(player.skillThree());
+                    player.reduceMana(player.getSKillThreeManaUsage());
+                    player.reduceSkillThreeCooldown();
                 }
             }
 
+            // regenerate random mana after attack/turn
+            newPlayerMana = random.nextInt(25, 51);
+            player.increaseMana(newPlayerMana);
+
             enemySkillChoice = random.nextInt(0, 4);
             CO.enemyRandomSkillChoice(enemy);
-
+            
             switch(enemySkillChoice) {
                 case 0 -> {
                     player.setHitpoints(enemy.basicAttack());
                 }
                 case 1 -> {
                     player.setHitpoints(enemy.skillOne());
+                    newEnemyMana = random.nextInt(10, 21);
+                    enemy.reduceMana(newEnemyMana);
+                    enemy.reduceSkillOneCooldown();
                 }
                 case 2 -> {
                     player.setHitpoints(enemy.skillTwo());
+                    newEnemyMana = random.nextInt(10, 21);
+                    enemy.reduceMana(newEnemyMana);
+                    enemy.reduceSkillTwoCooldown();
                 }
                 case 3 -> {
                     player.setHitpoints(enemy.skillThree());
+                    newEnemyMana = random.nextInt(10, 21);
+                    enemy.reduceMana(newEnemyMana);
+                    enemy.reduceSkillThreeCooldown();
                 }
             }
 
