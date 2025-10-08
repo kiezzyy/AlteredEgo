@@ -89,23 +89,20 @@ public class Player extends GameCharacter implements Skills {
     }
 
     public void reduceSkillOneCooldown() {
-        this.skillOneCooldown++;
-        if(this.skillOneCooldown >=2) {
-            this.skillOneCooldown = 0;
+        if (this.skillOneCooldown > 0) {
+            this.skillOneCooldown--;
         }
     }
 
     public void reduceSkillTwoCooldown() {
-        this.skillTwoCooldown++;
-        if(this.skillTwoCooldown >= 2) {
-            this.skillOneCooldown = 0;
+        if (this.skillTwoCooldown > 0) {
+            this.skillTwoCooldown--;
         }
     }
 
     public void reduceSkillThreeCooldown() {
-        this.skillThreeCooldown++;
-        if(this.skillThreeCooldown >= 5) {
-            this.skillThreeCooldown = 0;
+        if (this.skillThreeCooldown > 0) {
+            this.skillThreeCooldown--;
         }
     }
 
@@ -132,6 +129,18 @@ public class Player extends GameCharacter implements Skills {
         CO.printWithDelay("\n"+getName()+ " used Skill Three: " +getSkillThreeName()+ ", worth " +damage+ " of damage!", 150);
         return damage;
     }
+
+    public void activateSkillOneCooldown() {
+        this.skillOneCooldown = 2;
+    }
+    public void activateSkillTwoCooldown(){
+        this.skillTwoCooldown = 3;
+    }
+    public void activateSkillThreeCooldown() {
+        this.skillThreeCooldown = 5;
+    }
+
+
 
     public int getSKillOneManaUsage() {
         return skillOneManaUsage;
